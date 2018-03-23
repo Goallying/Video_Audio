@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PlayerView.h"
 @interface PlayerBottomView : UIView
-
 @property (nonatomic ,copy)void(^operation)(BOOL pause) ;
-@property (nonatomic ,copy)void(^slider)(CGFloat percent) ;
-
 @property (nonatomic ,assign)CGFloat playerCachePercent ;
 @property (nonatomic ,assign)CGFloat playerCurrentPercent ;
-
 @property (nonatomic ,copy)NSString * timeProcess;
+@property (nonatomic ,strong)PlayerView * playerView ;
 @end

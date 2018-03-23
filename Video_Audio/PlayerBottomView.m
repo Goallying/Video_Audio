@@ -15,6 +15,7 @@
 @property (nonatomic ,strong)UIButton * oprationBtn ;
 @property (nonatomic ,strong)UILabel * timeLabel ;
 @property (nonatomic ,strong)ProgressView * progressView ;
+@property (nonatomic ,strong)CADisplayLink * displayLink ;
 
 @end
 
@@ -35,31 +36,63 @@
         _timeLabel.maker.centerYTo(self, 0).rightTo(self, 10).heightEqualTo(20).widthGraterThan(44);
         _progressView.maker.leftTo(_oprationBtn, 10).rightTo(self, 200).centerYTo(self,0).heightEqualTo(40);
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(moviePlayDidEnd)
+                                                     name:AVPlayerItemDidPlayToEndTimeNotification
+                                                   object:nil];
+        
+        _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(updatePlayProcess)];
+        [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        
     }
     return self ;
+}
+- (void)moviePlayDidEnd {
+    
+    [_playerView moviePlayDidEnd];
+    [_displayLink invalidate];
+    
+    _oprationBtn.selected = YES ;
+}
+- (void)updatePlayProcess {
+    
+    NSTimeInterval current = CMTimeGetSeconds(_playerView.aPlayer.currentTime);
+    NSTimeInterval total = CMTimeGetSeconds(_playerView.aPlayer.currentItem.duration);
+    
+    _progressView.currentPercent = current/total;
+    _timeLabel.text = [NSString stringWithFormat:@"%@/%@", [self formatPlayTime:current], isnan(total)?@"00:00:00":[self formatPlayTime:total]];
 }
 - (void)playOrPauseAction:(UIButton *)btn {
     
     btn.selected = !btn.selected ;
-    if (self.operation) {
-        self.operation(btn.selected);
+    if (btn.selected) {
+        [_playerView playerPause];
+    }else{
+        [_playerView playerPlay];
     }
 }
 - (void)sliderValueChanged:(ProgressView *)progressView{
-    if (self.slider) {
-        self.slider(progressView.currentPercent);
+    
+    if (self.playerView) {
+        [self.playerView moveToPercent:progressView.currentPercent];
     }
 }
-- (void)setPlayerCachePercent:(CGFloat)playerCachePercent{
-    _progressView.cachePercent = playerCachePercent;
+- (void)setPlayerView:(PlayerView *)playerView{
+    _playerView = playerView ;
+    
+    __weak typeof (self) wSelf = self ;
+    [_playerView setCacheProcess:^(CGFloat percent) {
+        wSelf.progressView.cachePercent = percent;
+    }];
 }
-- (void)setPlayerCurrentPercent:(CGFloat)playerCurrentPercent{
-    _progressView.currentPercent = playerCurrentPercent ;
+- (NSString *)formatPlayTime:(NSTimeInterval)duration
+{
+    int minute = 0, hour = 0, secend = duration;
+    minute = (secend % 3600)/60;
+    hour = secend / 3600;
+    secend = secend % 60;
+    return [NSString stringWithFormat:@"%02d:%02d:%02d", hour, minute, secend];
 }
-- (void)setTimeProcess:(NSString *)timeProcess{
-    _timeLabel.text = timeProcess ;
-}
-
 - (ProgressView *)progressView{
     if (!_progressView) {
         _progressView = [ProgressView new];
@@ -85,5 +118,11 @@
         [_oprationBtn addTarget:self action:@selector(playOrPauseAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _oprationBtn;
+}
+- (void)dealloc {
+    
+    [_displayLink invalidate];
+    _displayLink = nil ;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 @end

@@ -12,8 +12,14 @@
 @interface PlayerView : UIView
 
 @property (nonatomic ,strong ,readonly)AVPlayer * aPlayer;
-@property (nonatomic ,copy)void (^playProcess)(CGFloat percent) ;
-- (instancetype)initWithVideoURL:(NSURL *)url ;
+@property (nonatomic ,copy)void (^cacheProcess)(CGFloat percent) ;
+@property (nonatomic ,copy)void (^playEnd)(void) ;
 
+- (instancetype)initWithVideoURL:(NSURL *)url ;
+//test
+- (void)moveToPercent:(CGFloat)percent ;
+- (void)playerPause ;
+- (void)playerPlay ;
+- (void)moviePlayDidEnd ;
 
 @end

@@ -21,12 +21,7 @@
     if (self = [super init]) {
         
         _videoURL = url ;
-        [self.layer addSublayer:self.playerLayer];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(moviePlayDidEnd)
-                                               name:AVPlayerItemDidPlayToEndTimeNotification
-                                                   object:nil];
+        [self.layer addSublayer:self.playerLayer];       
     }
     return self ;
 }
@@ -38,8 +33,8 @@
         
         NSTimeInterval loadedTime = [self availableDurationWithplayerItem:playerItem];
         NSTimeInterval totalTime = CMTimeGetSeconds(playerItem.duration);
-        if (self.playProcess) {
-            self.playProcess(loadedTime/totalTime);
+        if (self.cacheProcess) {
+            self.cacheProcess(loadedTime/totalTime);
         }
     }else if ([keyPath isEqualToString:@"status"]){
         if (playerItem.status == AVPlayerStatusReadyToPlay) {
@@ -53,8 +48,35 @@
 }
 - (void)moviePlayDidEnd{
     [_player pause];
+    if (self.playEnd) {
+        self.playEnd() ;
+    }
 }
-
+//test
+- (void)moveToPercent:(CGFloat)percent{
+    
+    if (_player.status == AVPlayerStatusReadyToPlay) {
+        NSTimeInterval duration = percent * CMTimeGetSeconds(_player.currentItem.duration);
+        CMTime seekTime = CMTimeMake(duration, 1);
+        [_player seekToTime:seekTime completionHandler:^(BOOL finished) {
+            if (finished) {
+                NSLog(@"---- 跳转结束");
+            }
+        }];
+    }
+}
+- (void)playerPlay{
+    //为0时是暂停状态 ，iOS 10 之前和之后 代表的意思不同
+    //设置非0 值，AVPlayerTimeControlStatusWaitingToPlayAtSpecifiedRate or AVPlayerTimeControlStatusPlaying
+    if (_player.rate == 0) {
+        [_player play];
+    }
+}
+- (void)playerPause{
+    if (_player.rate == 1) {
+        [_player pause];
+    }
+}
 - (NSTimeInterval)availableDurationWithplayerItem:(AVPlayerItem *)playerItem
 {
     NSArray *loadedTimeRanges = [playerItem loadedTimeRanges];
