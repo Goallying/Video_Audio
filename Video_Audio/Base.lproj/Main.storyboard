@@ -23,15 +23,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="播放本地视频"/>
                                 <connections>
-                                    <action selector="playLocalVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TEQ-HN-AWu"/>
+                                    <action selector="playLocalVideo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AAE-76-Ouc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIo-A0-tJZ">
-                                <rect key="frame" x="141" y="203" width="92" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hlb-rk-DKO">
+                                <rect key="frame" x="141" y="209" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="播放网络视频"/>
                                 <connections>
-                                    <action selector="playVideoOnlie:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scd-cK-zVW"/>
+                                    <action selector="playVideoOnline:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UHU-xp-jJK"/>
                                 </connections>
                             </button>
                         </subviews>

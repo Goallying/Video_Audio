@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551472EC20648F6F00E52882 /* PlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472EB20648F6F00E52882 /* PlayerViewController.m */; };
+		551472F020649FE200E52882 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472EF20649FE200E52882 /* PlayerView.m */; };
+		551472F32064A4A800E52882 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472F22064A4A800E52882 /* UIView+Layout.m */; };
+		551472F62064A4F900E52882 /* PlayerTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472F52064A4F900E52882 /* PlayerTopView.m */; };
+		551472F92064A80D00E52882 /* PlayerBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472F82064A80D00E52882 /* PlayerBottomView.m */; };
+		551472FC2064AFA100E52882 /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472FB2064AFA100E52882 /* ProgressView.m */; };
+		551472FF2064DAA000E52882 /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 551472FE2064DAA000E52882 /* Bridge.m */; };
 		AED137692063D69300875F23 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AED137682063D69300875F23 /* AppDelegate.m */; };
 		AED1376C2063D69300875F23 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AED1376B2063D69300875F23 /* ViewController.m */; };
 		AED1376F2063D69300875F23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AED1376D2063D69300875F23 /* Main.storyboard */; };
@@ -17,6 +24,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		551472EA20648F6F00E52882 /* PlayerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerViewController.h; sourceTree = "<group>"; };
+		551472EB20648F6F00E52882 /* PlayerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerViewController.m; sourceTree = "<group>"; };
+		551472EE20649FE200E52882 /* PlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		551472EF20649FE200E52882 /* PlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		551472F12064A4A800E52882 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		551472F22064A4A800E52882 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		551472F42064A4F900E52882 /* PlayerTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerTopView.h; sourceTree = "<group>"; };
+		551472F52064A4F900E52882 /* PlayerTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerTopView.m; sourceTree = "<group>"; };
+		551472F72064A80D00E52882 /* PlayerBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerBottomView.h; sourceTree = "<group>"; };
+		551472F82064A80D00E52882 /* PlayerBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerBottomView.m; sourceTree = "<group>"; };
+		551472FA2064AFA100E52882 /* ProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
+		551472FB2064AFA100E52882 /* ProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
+		551472FD2064DAA000E52882 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
+		551472FE2064DAA000E52882 /* Bridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
 		AED137642063D69300875F23 /* Video_Audio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Video_Audio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AED137672063D69300875F23 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AED137682063D69300875F23 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,10 +82,24 @@
 			isa = PBXGroup;
 			children = (
 				AED137802063DD3900875F23 /* 海贼王精彩剪辑.mp4 */,
+				551472F12064A4A800E52882 /* UIView+Layout.h */,
+				551472F22064A4A800E52882 /* UIView+Layout.m */,
 				AED137672063D69300875F23 /* AppDelegate.h */,
 				AED137682063D69300875F23 /* AppDelegate.m */,
 				AED1376A2063D69300875F23 /* ViewController.h */,
 				AED1376B2063D69300875F23 /* ViewController.m */,
+				551472EE20649FE200E52882 /* PlayerView.h */,
+				551472EF20649FE200E52882 /* PlayerView.m */,
+				551472F42064A4F900E52882 /* PlayerTopView.h */,
+				551472F52064A4F900E52882 /* PlayerTopView.m */,
+				551472F72064A80D00E52882 /* PlayerBottomView.h */,
+				551472F82064A80D00E52882 /* PlayerBottomView.m */,
+				551472FA2064AFA100E52882 /* ProgressView.h */,
+				551472FB2064AFA100E52882 /* ProgressView.m */,
+				551472EA20648F6F00E52882 /* PlayerViewController.h */,
+				551472EB20648F6F00E52882 /* PlayerViewController.m */,
+				551472FD2064DAA000E52882 /* Bridge.h */,
+				551472FE2064DAA000E52882 /* Bridge.m */,
 				AED1376D2063D69300875F23 /* Main.storyboard */,
 				AED137702063D69300875F23 /* Assets.xcassets */,
 				AED137722063D69300875F23 /* LaunchScreen.storyboard */,
@@ -146,9 +181,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551472F62064A4F900E52882 /* PlayerTopView.m in Sources */,
 				AED1376C2063D69300875F23 /* ViewController.m in Sources */,
+				551472FF2064DAA000E52882 /* Bridge.m in Sources */,
+				551472FC2064AFA100E52882 /* ProgressView.m in Sources */,
+				551472EC20648F6F00E52882 /* PlayerViewController.m in Sources */,
+				551472F32064A4A800E52882 /* UIView+Layout.m in Sources */,
 				AED137772063D69300875F23 /* main.m in Sources */,
 				AED137692063D69300875F23 /* AppDelegate.m in Sources */,
+				551472F020649FE200E52882 /* PlayerView.m in Sources */,
+				551472F92064A80D00E52882 /* PlayerBottomView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
