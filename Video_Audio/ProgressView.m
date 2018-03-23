@@ -23,13 +23,13 @@
         _cachePercent = 0.0 ;
         
         _lineWidth = 2.0 ;
-        _circleRadius = 8 ;
-        
-        self.backgroundColor = [UIColor clearColor];
         _lineColor = [UIColor whiteColor];
         _progessLineColor = RGBColor(254, 64, 22, 1);
         _cacheLineColor = [UIColor grayColor];
+        _circleRadius = 8 ;
         _circleColor = RGBColor(254, 64, 22, 1);
+
+        self.backgroundColor = [UIColor clearColor];
         
     }
     return self ;
@@ -61,7 +61,6 @@
 - (void)drawRect:(CGRect)rect {
     
     CGContextRef ctx  = UIGraphicsGetCurrentContext() ;
-    
     CGFloat x = 0 ;
     CGFloat y = (self.height - _lineWidth) /2 ;
     //line
@@ -73,7 +72,7 @@
     CGContextStrokePath(ctx);
     //cache line
     CGContextMoveToPoint(ctx, x, y);
-    CGContextAddLineToPoint(ctx, self.width * _cachePercent, y);
+    CGContextAddLineToPoint(ctx, self.width * (isnan(_cachePercent)?0.0:_cachePercent), y);
     CGContextSetStrokeColorWithColor(ctx, _cacheLineColor.CGColor);//画笔颜色
     CGContextSetLineWidth(ctx, _lineWidth);//线的宽度
     CGContextSetStrokeColorWithColor(ctx, _cacheLineColor.CGColor);
@@ -82,7 +81,7 @@
     CGContextStrokePath(ctx);
     //progress line
     CGContextMoveToPoint(ctx, x, y);
-    CGContextAddLineToPoint(ctx, self.width * _currentPercent, y);
+    CGContextAddLineToPoint(ctx, self.width * (isnan(_currentPercent)?0.0:_currentPercent), y);
     CGContextSetStrokeColorWithColor(ctx, _progessLineColor.CGColor);//画笔颜色
     CGContextSetLineWidth(ctx, _lineWidth);//线的宽度
     CGContextSetStrokeColorWithColor(ctx, _progessLineColor.CGColor);
@@ -95,13 +94,13 @@
     CGContextSetLineWidth(ctx, circleWidth);//线的宽度
     CGContextSetFillColorWithColor(ctx, [UIColor clearColor].CGColor);//填充颜色
     CGContextSetShadow(ctx, CGSizeMake(1, 1), 1.f);//阴影
-    CGContextAddArc(ctx, self.width * _currentPercent, self.height/2, _circleRadius, 0, 2 * M_PI, 0); //添加一个圆
+    CGContextAddArc(ctx, self.width * (isnan(_currentPercent)?0.0:_currentPercent), self.height/2, _circleRadius, 0, 2 * M_PI, 0); //添加一个圆
     CGContextDrawPath(ctx, kCGPathFillStroke); //绘制路径加填充
     //内层圆
     CGContextSetStrokeColorWithColor(ctx, nil);
-    CGContextSetLineWidth(ctx, 0);
+    CGContextSetLineWidth(ctx, 1);
     CGContextSetFillColorWithColor(ctx, _circleColor.CGColor);
-    CGContextAddArc(ctx, self.width * _currentPercent, self.height/2, _circleRadius / 2, 0, 2 * M_PI, 0);
+    CGContextAddArc(ctx, self.width * (isnan(_currentPercent)?0.0:_currentPercent), self.height/2, _circleRadius / 2, 0, 2 * M_PI, 0);
     CGContextDrawPath(ctx, kCGPathFillStroke);
 
 }

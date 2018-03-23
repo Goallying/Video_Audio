@@ -11,6 +11,8 @@
 
 #define kVideoURL @"http://bos.nj.bpc.baidu.com/tieba-smallvideo/11772_3c435014fb2dd9a5fd56a57cc369f6a0.mp4"
 
+//#define kVideoURL @"http://player.youku.com/embed/XMzQzNjgyNjUyNA=="
+
 @interface ViewController ()
 
 @end

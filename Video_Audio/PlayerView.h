@@ -16,7 +16,8 @@
 @property (nonatomic ,copy)void (^playEnd)(void) ;
 
 - (instancetype)initWithVideoURL:(NSURL *)url ;
-//test
+
+
 - (void)moveToPercent:(CGFloat)percent ;
 - (void)playerPause ;
 - (void)playerPlay ;

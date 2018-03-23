@@ -58,7 +58,7 @@
     
     NSTimeInterval current = CMTimeGetSeconds(_playerView.aPlayer.currentTime);
     NSTimeInterval total = CMTimeGetSeconds(_playerView.aPlayer.currentItem.duration);
-    
+
     _progressView.currentPercent = current/total;
     _timeLabel.text = [NSString stringWithFormat:@"%@/%@", [self formatPlayTime:current], isnan(total)?@"00:00:00":[self formatPlayTime:total]];
 }

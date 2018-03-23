@@ -13,5 +13,5 @@
 @property (nonatomic ,assign)CGFloat playerCachePercent ;
 @property (nonatomic ,assign)CGFloat playerCurrentPercent ;
 @property (nonatomic ,copy)NSString * timeProcess;
-@property (nonatomic ,strong)PlayerView * playerView ;
+@property (nonatomic ,weak)PlayerView * playerView ;
 @end
